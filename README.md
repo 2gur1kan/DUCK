@@ -6,15 +6,28 @@ Moving away from generic, corporate AI assistant behaviors, Ördek is designed w
 
 ---
 
-## ⚠️ CRITICAL STEP: AI Model Download Instruction
-> **IMPORTANT:** Due to GitHub's file size limitations (files exceeding 100 MB cannot be uploaded directly to the repository), the required language model is **NOT included** in the source files. You **MUST** download the model manually before running or building the project.
+⚠️ CRITICAL STEP: Git LFS (Large File Storage) Setup
+Why Git LFS is Mandatory
+GitHub enforces a strict 100 MB file size limit per file. Because this project includes massive binary assets—specifically the core local language model (*.gguf) and native Android libraries (*.so files)—they cannot be uploaded via standard Git workflows.
 
-### How to set up the model:
-1. Go to the official repository: [HuggingFace - Qwen2.5-0.5B-Instruct-GGUF](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/tree/main)
-2. Download the model file (Recommended: `qwen2.5-0_5b-instruct-q4_k_m.gguf` or any preferred quantization flavor).
-3. Import the downloaded `.gguf` file into your Unity project.
-4. Assign it to your `LLMCharacter` inspector component.
+To solve this, the project uses Git LFS. It replaces heavy binaries with lightweight text pointers inside the repository. If you skip the LFS configuration, your cloned project will contain missing files, leading to unresolvable Unity compilation errors.
 
+Quick Installation Steps
+Before opening the project in Unity, open your terminal (or Git Bash) and run the following commands to install the extension and fetch the actual files:
+
+Bash
+# 1. Download and install Git LFS on your system (if not already done)
+# Windows: git-lfs.com | macOS: brew install git-lfs | Ubuntu: sudo apt-get install git-lfs
+
+# 2. Register the LFS filters in your global Git configuration
+git lfs install
+
+# 3. Navigate into your cloned project directory
+cd ordek
+
+# 4. Download the actual heavy model and library binaries
+git lfs pull
+Once the download finishes, verify that your .gguf model file and .so plugins are fully materialized with their actual file sizes inside your Unity assets folder.
 ---
 
 ## 🚀 Key Features
@@ -42,3 +55,7 @@ Manages the offline deployment of the LLM right within the Unity environment. It
 ### 🖥️ Desktop Pet Architecture: NikoDesktopPet
 The application's graphical overlay, screen boundary collisions, and aesthetic desk-companion movement patterns are inherited from the foundation of the open-source **NikoDesktopPet** project.
 - Repository: [GitHub - omotamiadev/NikoDesktopPet](https://github.com/omotamiadev/NikoDesktopPet)
+
+### 🦆 Try The Project
+You can directly play, test, and download the compiled, ready-to-run release of Ördek via the official itch.io platform:  
+👉 [Play Ördek on itch.io](https://systembug.itch.io/duck)
