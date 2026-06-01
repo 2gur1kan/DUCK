@@ -1,42 +1,44 @@
 # Ördek 🦆 | Local AI-Powered Desktop Pet & NPC
 
-**Ördek**, Unity oyun motoru kullanılarak geliştirilmiş, tamamen yerel (local) olarak çalışan ve özgün bir kişiliğe sahip yapay zeka tabanlı bir masaüstü evcil hayvan (desktop pet) ve NPC projesidir. 
+**Ördek** (Duck) is an open-source, locally-run desktop pet and AI-powered NPC prototype developed using the Unity game engine. 
 
-Sıradan, kurumsal ve asistan yapay zeka kalıplarından uzaklaşarak; oyuncuyla samimi, esprili ve talimatlara sadık şekilde Türkçe diyalog kurabilen akıllı bir oyun karakteri prototipidir.
-
----
-
-## 🚀 Öne Çıkan Özellikler
-
-- **%100 Yerel (Offline) Çalışma:** Hiçbir API anahtarına (OpenAI vb.) veya internet bağlantısına ihtiyaç duymadan doğrudan kullanıcının donanımını kullanır.
-- **Akıllı Cümle ve Bağlam Yönetimi:** Geliştirilen özel filtreleme motoru sayesinde, küçük dil modellerinde sıkça yaşanan döngüsel tekrarlar, kelime katlanmaları ve LLM sistem etiketlerinin sızması tamamen engellenmiştir.
-- **Gelişmiş Persona Sadakati:** Rol yapma (roleplay) mekaniği sayesinde Ördek, kurumsal bir asistan gibi davranmayı reddeder ve tamamen bir oyun karakteri gibi yanıtlar verir.
-- **Hafıza ve Talimat Testi:** Kullanıcı tarafından verilen anlık kuralları ve hafıza testlerini akış boyunca başarıyla korur.
+Moving away from generic, corporate AI assistant behaviors, Ördek is designed with a unique, sassy, and playful personality. It engages with the player in natural Turkish dialogue while strictly adhering to system prompts and custom runtime behavioral constraints. If you want to talk to him, simply press the Shift+I key combination.
 
 ---
 
-## 🛠️ Teknolojik Altyapı & Açık Kaynak Bağımlılıkları
+## ⚠️ CRITICAL STEP: AI Model Download Instruction
+> **IMPORTANT:** Due to GitHub's file size limitations (files exceeding 100 MB cannot be uploaded directly to the repository), the required language model is **NOT included** in the source files. You **MUST** download the model manually before running or building the project.
 
-Bu proje, gücünü açık kaynak dünyasının başarılı kütüphanelerinden ve hafif dil modellerinden almaktadır:
-
-### 🧠 Yapay Zeka Modeli: Qwen 2.5 (0.5B Instruct GGUF)
-Ördek'in zihin mimarisi, Alibaba tarafından geliştirilen ve son teknoloji hafif dil modellerinden biri olan **Qwen2.5-0.5B-Instruct** üzerine kurulmuştur.
-- **Format:** Cihaz kaynaklarını minimum düzeyde tüketen ve CPU/GPU üzerinde jet hızında çalışan **GGUF** formatı tercih edilmiştir.
-- **Yetenek:** 0.5 milyar parametreye sahip olmasına rağmen Türkçe talimatları anlama ve bağlamı sürdürme konusunda yüksek performansa sahiptir.
-- Model Sayfası: [HuggingFace - Qwen2.5-0.5B-Instruct-GGUF](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF)
-
-### 🎮 Unity Entegrasyonu: LLMUnity
-Yapay zeka modelinin Unity içinde hiçbir bulut servisine bağımlı olmadan gömülü olarak çalıştırılmasını sağlar. Projede canlı metin akışı (streaming) ve asenkron yanıt tamamlama süreçleri bu kütüphane üzerinden yönetilmektedir.
-- Depo: [GitHub - undreamai/LLMUnity](https://github.com/undreamai/LLMUnity)
-
-### 🖥️ Masaüstü Mimarisi: NikoDesktopPet
-Ördek'in ekrandaki fiziksel varlığı, masaüstü etkileşimleri ve ekran sınırları içerisindeki estetik hareket mimarisi, açık kaynak kodlu **NikoDesktopPet** projesinin esnek altyapısı temel alınarak geliştirilmiştir.
-- Depo: [GitHub - omotamiadev/NikoDesktopPet](https://github.com/omotamiadev/NikoDesktopPet)
+### How to set up the model:
+1. Go to the official repository: [HuggingFace - Qwen2.5-0.5B-Instruct-GGUF](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/tree/main)
+2. Download the model file (Recommended: `qwen2.5-0_5b-instruct-q4_k_m.gguf` or any preferred quantization flavor).
+3. Import the downloaded `.gguf` file into your Unity project.
+4. Assign it to your `LLMCharacter` inspector component.
 
 ---
 
-## ⚙️ Kurulum ve Çalıştırma
+## 🚀 Key Features
 
-1. Bu depoyu klonlayın:
-   ```bash
-   git clone [https://github.com/kullanici-adiniz/ordek.git](https://github.com/kullanici-adiniz/ordek.git)
+- **100% Local & Offline:** Operates entirely on the user's hardware without relying on any external APIs (e.g., OpenAI) or internet connectivity.
+- **Robust Text Stream Filtering:** Includes a custom C# buffering engine built specifically for small language models to eliminate recursive phrasing, text-doubling loops, and accidental system tag leakages during live text streaming.
+- **Strict Persona Alignment:** Guided by advanced roleplay rules that force the model to behave purely as an interactive game character rather than a chatbot.
+- **Contextual Memory Retention:** Successfully remembers and follows dynamic player-defined rules and custom constraints within the chat flow.
+
+---
+
+## 🛠️ Tech Stack & Open-Source Dependencies
+
+This project leverages cutting-edge lightweight language models and open-source packages from the Unity development community:
+
+### 🧠 Language Model: Qwen 2.5 (0.5B Instruct GGUF)
+The AI cognitive engine is powered by Alibaba's state-of-the-art **Qwen2.5-0.5B-Instruct**.
+- **Format:** The **GGUF** format is used to ensure high performance on consumer-grade CPUs and GPUs with minimal hardware resource allocation.
+- **Capability:** Despite its compact size (0.5 Billion parameters), it demonstrates exceptional comprehension of Turkish syntax and instructions.
+
+### 🎮 Unity Integration: LLMUnity
+Manages the offline deployment of the LLM right within the Unity environment. It handles asynchronous inference pipelines and real-time word-by-word text streaming (token handling).
+- Repository: [GitHub - undreamai/LLMUnity](https://github.com/undreamai/LLMUnity)
+
+### 🖥️ Desktop Pet Architecture: NikoDesktopPet
+The application's graphical overlay, screen boundary collisions, and aesthetic desk-companion movement patterns are inherited from the foundation of the open-source **NikoDesktopPet** project.
+- Repository: [GitHub - omotamiadev/NikoDesktopPet](https://github.com/omotamiadev/NikoDesktopPet)
