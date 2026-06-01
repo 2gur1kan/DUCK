@@ -16,16 +16,16 @@ Quick Installation Steps
 Before opening the project in Unity, open your terminal (or Git Bash) and run the following commands to install the extension and fetch the actual files:
 
 Bash
-# 1. Download and install Git LFS on your system (if not already done)
-# Windows: git-lfs.com | macOS: brew install git-lfs | Ubuntu: sudo apt-get install git-lfs
+1. Download and install Git LFS on your system (if not already done)
+Windows: git-lfs.com | macOS: brew install git-lfs | Ubuntu: sudo apt-get install git-lfs
 
-# 2. Register the LFS filters in your global Git configuration
+2. Register the LFS filters in your global Git configuration
 git lfs install
 
-# 3. Navigate into your cloned project directory
+3. Navigate into your cloned project directory
 cd ordek
 
-# 4. Download the actual heavy model and library binaries
+4. Download the actual heavy model and library binaries
 git lfs pull
 Once the download finishes, verify that your .gguf model file and .so plugins are fully materialized with their actual file sizes inside your Unity assets folder.
 ---
