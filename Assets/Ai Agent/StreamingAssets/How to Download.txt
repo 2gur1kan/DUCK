@@ -1,0 +1,8 @@
+CRITICAL STEP: AI Model Download Instruction
+IMPORTANT: Due to GitHub's file size limitations (files exceeding 100 MB cannot be uploaded directly to the repository), the required language model is NOT included in the source files. You MUST download the model manually before running or building the project.
+
+How to set up the model:
+Go to the official repository: HuggingFace - Qwen2.5-0.5B-Instruct-GGUF
+Download the model file (Recommended: qwen2.5-0_5b-instruct-q4_k_m.gguf or any preferred quantization flavor).
+Import the downloaded .gguf file into your Unity project.
+Assign it to your LLMCharacter inspector component.

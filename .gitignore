@@ -104,3 +104,5 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+Assets/Ai Agent/StreamingAssets/qwen2.5-7b-instruct-q3_k_m.gguf
+
